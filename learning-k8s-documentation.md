@@ -673,12 +673,11 @@ sudo install -m 0755 /tmp/eksctl /usr/local/bin && rm /tmp/eksctl
 eksctl create cluster \
 --name sigmaEKS-Cluster \
 --region us-east-1 \
-##--region ap-south-1 \
 --nodegroup-name sigmaEKS-Cluster-NG \
 --node-type t3.medium \
---nodes 2 \
---nodes-min 1 \
---nodes-max 3 \
+--nodes 3 \
+--nodes-min 2 \
+--nodes-max 5 \
 --ssh-access \
 --ssh-public-key kp \
 --managed
