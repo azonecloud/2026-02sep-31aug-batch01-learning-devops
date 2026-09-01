@@ -16,11 +16,11 @@ spec:
               service:
                 name: orders-service
                 port:
-                  number: 8080
+                  number: 5000
           - path: /payments
             pathType: Prefix
             backend:
               service:
                 name: payments-service
                 port:
-                  number: 8080
+                  number: 5000

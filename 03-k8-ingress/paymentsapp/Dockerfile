@@ -1,15 +1,29 @@
-# FROM ibmjava:jre
+FROM python:3.13
+WORKDIR /usr/local/app
 
-FROM ubuntu:20.04
+# Install the application dependencies
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-WORKDIR myapp
+# Copy in the source code
+COPY app.py ./app.py
+EXPOSE 5000
 
-# RUN apt-get update -y && apt install default-jre -y
+# Setup an app user so the container doesn't run as the root user
+RUN useradd myuser
+USER myuser
 
-RUN apt-get update -y && apt install openjdk-17-jdk -y
+CMD ["python", "app.py"]
 
-COPY target/spring-boot-complete-0.0.1-SNAPSHOT.jar myapp.jar
+# docker images
+# docker ps
+# docker rm -f <container_id>
+# docker rmi -f <image_id>
+# docker rm -f $(docker ps -a -q)
+# docker rmi -f $(docker images -a -q)
 
-EXPOSE 8080
+# docker build -t mlapp:latest .
+# docker run -p 5000:5000 mlapp:latest
 
-CMD [ "java","-jar","myapp.jar" ]
+# docker pull ssadcloud/mlapp:latest
+# docker run -p 5000:5000 ssadcloud/mlapp:latest

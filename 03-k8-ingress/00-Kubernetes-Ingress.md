@@ -31,7 +31,7 @@ spec:
       - name: orders-container
         image: ssadcloud/orders:latest
         ports:
-          - containerPort: 8080
+          - containerPort: 5000
 ```
 
 
@@ -55,7 +55,7 @@ spec:
       - name: payments-container
         image: ssadcloud/payments:latest
         ports:
-          - containerPort: 8080
+          - containerPort: 5000
 ```
 
 # Services
@@ -70,8 +70,8 @@ spec:
     app: orders
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 5000
   type: ClusterIP
 ```
 
@@ -86,8 +86,8 @@ spec:
     app: payments
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 5000
   type: ClusterIP
 ```
 
@@ -102,7 +102,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: myapp-ingress.localhost
+    - host: www.mainexample.com
       http:
         paths:
           - path: /orders
@@ -111,14 +111,14 @@ spec:
               service:
                 name: orders-service
                 port:
-                  number: 8080
+                  number: 5000
           - path: /payments
             pathType: Prefix
             backend:
               service:
                 name: payments-service
                 port:
-                  number: 8080
+                  number: 5000
 ```
 # Install Ingress Controller (NGINX)
 ```bash
@@ -151,21 +151,21 @@ nano /etc/hosts (Linux)
 C:\Windows\System32\drivers\etc\hosts (Windows)
 ```
 127.0.0.1 myapp-ingress.localhost
-127.0.0.1 myapp.example.com
+127.0.0.1 www.mainexample.com
 ```
 # Port Forward Ingress Controller
 ```bash
-kubectl port-forward -n ingress-nginx service/ingress-nginx-controller 8080:80
+kubectl port-forward -n ingress-nginx service/ingress-nginx-controller 80:80
 ```
 
 # Testing
 ## Orders API
 ```bash
-curl http://myapp-ingress.localhost:8080/orders
+curl http://www.mainexample.com/orders
 ```
 ## Payments API
 ```bash
-curl http://myapp-ingress.localhost:8080/payments
+curl http://www.mainexample.com/payments
 ```
 # Expected Output
 ```

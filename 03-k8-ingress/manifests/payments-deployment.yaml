@@ -16,4 +16,4 @@ spec:
       - name: payments-container
         image: ssadcloud/payments:latest
         ports:
-          - containerPort: 8080
+          - containerPort: 5000

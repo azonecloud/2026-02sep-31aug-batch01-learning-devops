@@ -16,4 +16,4 @@ spec:
       - name: orders-container
         image: ssadcloud/orders:latest
         ports:
-          - containerPort: 8080
+          - containerPort: 5000
