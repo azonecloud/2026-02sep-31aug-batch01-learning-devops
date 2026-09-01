@@ -683,6 +683,8 @@ eksctl create cluster \
 --managed
 ```
 
+eksctl get clusters --region us-east-1
+
 ## Delete Cluster
 
 ```bash

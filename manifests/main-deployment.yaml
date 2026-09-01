@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jagan-deployment
+  labels:
+    app: jagan-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jagan-app
+  template:
+    metadata:
+      labels:
+        app: jagan-app
+    spec:
+      containers:
+      - name: jagan-app-container
+        image: 792172459577.dkr.ecr.us-east-1.amazonaws.com/jagan-ecr
+        ports:
+        - containerPort: 5000
