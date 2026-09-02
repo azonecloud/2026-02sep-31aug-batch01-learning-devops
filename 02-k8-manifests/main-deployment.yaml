@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jagan-deployment
+  name: kumar-deployment
   labels:
-    app: jagan-app
+    app: kumar-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: jagan-app
+      app: kumar-app
   template:
     metadata:
       labels:
-        app: jagan-app
+        app: kumar-app
     spec:
       containers:
-      - name: jagan-app-container
-        image: 792172459577.dkr.ecr.us-east-1.amazonaws.com/jagan-ecr
+      - name: kumar-app-container
+        image: 792172459577.dkr.ecr.us-east-1.amazonaws.com/kumar-ecr
         ports:
         - containerPort: 5000

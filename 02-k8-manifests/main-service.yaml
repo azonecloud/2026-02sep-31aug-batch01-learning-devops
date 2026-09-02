@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: jagan-service
-  #namespace: jagan-service
+  name: kumar-service
+  #namespace: kumar-service
   labels:
-    app: jagan-app
+    app: kumar-app
 spec:
   type: LoadBalancer
   selector:
-    app: jagan-app
+    app: kumar-app
   ports:
     - name: http
       port: 5000
