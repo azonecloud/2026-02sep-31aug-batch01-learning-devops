@@ -1,6 +1,0 @@
----
-- name: 0_playbook_webserver_role
-  hosts: webservers
-  become: yes
-  roles:
-    - 0_webserver_role
