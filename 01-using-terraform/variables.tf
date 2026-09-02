@@ -45,3 +45,8 @@ variable "env" {
   default     = "dev"
   description = "Default Env"
 }
+
+variable "bucket_name" {
+  default     = "admin-terraform-bucket"
+  description = "S3 Bucket Name"
+}
