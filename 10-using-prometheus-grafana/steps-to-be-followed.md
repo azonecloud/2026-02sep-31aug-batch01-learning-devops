@@ -112,20 +112,40 @@ Key Page:
 
 -- For Prometheous Server
 # main-prometheous-release-prometheus-server.default.svc.cluster.local
-``` bash export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=prometheus,app.kubernetes.io/instance=main-prometheous-release" -o jsonpath="{.items[0].metadata.name}")
+NAME: my-prometheus
+LAST DEPLOYED: Wed Sep  2 12:25:55 2026
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+DESCRIPTION: Install complete
+TEST SUITE: None
+NOTES:
+The Prometheus server can be accessed via port 80 on the following DNS name from within your cluster:
+my-prometheus-server.default.svc.cluster.local
 
-kubectl --namespace default port-forward $POD_NAME 9090
 
--- For Alert Manager:
-# main-prometheous-release-alertmanager.default.svc.cluster.local
-  export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=alertmanager,app.kubernetes.io/instance=main-prometheous-release" -o jsonpath="{.items[0].metadata.name}")
+Get the Prometheus server URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=prometheus,app.kubernetes.io/instance=my-prometheus" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace default port-forward $POD_NAME 9090
+
+Prometheus alertmanager can be accessed via port 9093 on the following DNS name from within your cluster:
+my-prometheus-alertmanager.default.svc.cluster.local
+
+
+Get the Alertmanager URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=alertmanager,app.kubernetes.io/instance=my-prometheus" -o jsonpath="{.items[0].metadata.name}")
   kubectl --namespace default port-forward $POD_NAME 9093
 
--- For PushGateway:
-# main-prometheous-release-prometheus-pushgateway.default.svc.cluster.local
-main-prometheous-release-prometheus-pushgateway.default.svc.cluster.local
-  export POD_NAME=$(kubectl get pods --namespace default -l "app=prometheus-pushgateway,component=pushgateway" -o jsonpath="{.items[0].metadata.name}")
+Prometheus Pushgateway can be accessed via port 9091 on the following DNS name from within your cluster:
+my-prometheus-prometheus-pushgateway.default.svc.cluster.local
+
+
+Get the Pushgateway URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=prometheus-pushgateway,app.kubernetes.io/instance=my-prometheus" -o jsonpath="{.items[0].metadata.name}")
   kubectl --namespace default port-forward $POD_NAME 9091
+
+For more information on running Prometheus, visit:
+https://prometheus.io/
 ```
 
 ## GRAFANA INSTALLATION USING HELM CHARTS
@@ -138,6 +158,7 @@ main-prometheous-release-prometheus-pushgateway.default.svc.cluster.local
 
 1. Get your 'admin' user password by running:
    kubectl get secret --namespace default main-grafana-release -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+    JS5cDavhbehwlVuXJzy2l2attHUs8NgCfniGHZTZ
 
 2. The Grafana server can be accessed via port 80 on the following DNS name from within your cluster:
    main-grafana-release.default.svc.cluster.local
