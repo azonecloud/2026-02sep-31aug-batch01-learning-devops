@@ -625,6 +625,82 @@ kubectl port-forward svc/my-service 9090:9090
 ```
 
 
+## List Workspaces / Namespaces
+kubectl get namespaces
+
+
+Short form:
+
+kubectl get ns
+
+
+List all resources in all namespaces:
+
+kubectl get all --all-namespaces
+
+Switch Workspace / Namespace
+
+Set the default namespace for your current kubectl context:
+
+kubectl config set-context --current --namespace=<namespace-name>
+
+
+Example:
+
+kubectl config set-context --current --namespace=dev
+
+
+Check the current context and namespace:
+
+kubectl config view --minify --output 'jsonpath={..namespace}'
+
+
+List available contexts:
+
+kubectl config get-contexts
+
+
+Switch Kubernetes context/cluster:
+
+kubectl config use-context <context-name>
+
+List Deployments and Services Across All Workspaces
+
+Deployments:
+
+kubectl get deployments --all-namespaces
+
+
+Services:
+
+kubectl get services --all-namespaces
+
+
+Both:
+
+kubectl get deployments,services --all-namespaces
+
+Delete All Deployments Across All Workspaces
+kubectl delete deployments --all --all-namespaces
+
+Delete All Services Across All Workspaces
+kubectl delete services --all --all-namespaces
+
+Delete Both Across All Workspaces
+kubectl delete deployments,services --all --all-namespaces
+
+
+⚠️ This last command is cluster-wide and destructive. It deletes every Deployment and Service in every namespace, including resources in namespaces such as kube-system.
+
+Safer: delete only from one workspace
+kubectl delete deployments --all -n <namespace>
+kubectl delete services --all -n <namespace>
+
+
+For example:
+
+kubectl delete deployments --all -n dev
+kubectl delete services --all -n dev
 
 # 15. Terraform Installation
 
@@ -682,6 +758,8 @@ eksctl create cluster \
 --ssh-public-key kp \
 --managed
 ```
+
+kubectl config set-context --current --namespace=default
 
 eksctl get clusters --region us-east-1
 
@@ -938,7 +1016,6 @@ Amazon EFS Integration
         ▼
 Production DevOps Platform
 ```
-Sure. Here's a structured document version of your PostgreSQL on Linux setup guide.
 
 
 
