@@ -7,3 +7,8 @@ resource "aws_s3_bucket" "my_bucket" {
     Environment = "Dev"
   }
 }
+
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "xmainbt-usin-tf-and-jenkins"
+
+}
