@@ -349,6 +349,7 @@ Creates and manages:
 ## Build
 ```bash
 docker compose build
+docker-compose up -d --build
 ```
 
 ## Start
