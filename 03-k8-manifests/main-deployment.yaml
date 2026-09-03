@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: kumar-app-container
-        image: 792172459577.dkr.ecr.us-east-1.amazonaws.com/kumar-ecr
+        image: 792172459577.dkr.ecr.us-east-1.amazonaws.com/kumar-ecr:latest
         ports:
         - containerPort: 5000
