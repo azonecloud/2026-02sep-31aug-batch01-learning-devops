@@ -608,6 +608,7 @@ kubectl get deployments
 ## Deployment
 
 ```bash
+kubectl config set-context --current --namespace=kumar-ns
 kubectl apply -f deployment.yaml
 kubectl delete -f deployment.yaml
 ```

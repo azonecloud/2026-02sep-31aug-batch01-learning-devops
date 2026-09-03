@@ -16,7 +16,8 @@ data:
   # =========================
   # Database (non-sensitive)
   # =========================
-  DB_HOST: "mainpostgresqldb.cnua4awuoopi.us-east-1.rds.amazonaws.com"
+  DB_HOST: "maindb.cyh4eu08crnc.us-east-1.rds.amazonaws.com"
+  #DB_HOST: "host.minikube.internal"
   DB_PORT: "5432"
   DB_NAME: "postgres"
 
@@ -24,7 +25,7 @@ data:
   SPRING_DATASOURCE_DRIVER_CLASS_NAME: "org.postgresql.Driver"
 
   # =========================
-  # Hikari Pool
+  # Hikari Pool 
   # =========================
   DB_POOL_MAX_SIZE: "20"
   DB_POOL_MIN_IDLE: "5"
