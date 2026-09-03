@@ -647,7 +647,9 @@ kubectl config set-context --current --namespace=<namespace-name>
 
 Example:
 
-kubectl config set-context --current --namespace=dev
+kubectl config set-context --current --namespace=default
+kubectl config set-context --current --namespace=kumar-ns
+
 
 
 Check the current context and namespace:
