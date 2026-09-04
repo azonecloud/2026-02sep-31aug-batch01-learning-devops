@@ -113,7 +113,7 @@ Key Page:
 -- For Prometheous Server
 # main-prometheous-release-prometheus-server.default.svc.cluster.local
 NAME: my-prometheus
-LAST DEPLOYED: Wed Sep  2 12:25:55 2026
+LAST DEPLOYED: Fri Sep  4 15:02:19 2026
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
@@ -156,15 +156,32 @@ https://prometheus.io/
     helm install main-grafana-release grafana/grafana
 
 
+NAME                    URL                                                
+istio                   https://istio-release.storage.googleapis.com/charts
+jetstack                https://charts.jetstack.io                         
+grafana                 https://grafana.github.io/helm-charts              
+grafana-community       https://grafana-community.github.io/helm-charts/   
+prometheus-community    https://prometheus-community.github.io/helm-charts 
+PS C:\Users\HP\OneDrive\Desktop\2026-04sep-02sep-batch02-learning-devops> helm install main-grafana-release grafana/grafana
+level=WARN msg="this chart is deprecated"
+NAME: main-grafana-release
+LAST DEPLOYED: Fri Sep  4 15:10:00 2026
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+DESCRIPTION: Install complete
+NOTES:
 1. Get your 'admin' user password by running:
+
    kubectl get secret --namespace default main-grafana-release -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
-    JS5cDavhbehwlVuXJzy2l2attHUs8NgCfniGHZTZ
+
 
 2. The Grafana server can be accessed via port 80 on the following DNS name from within your cluster:
+
    main-grafana-release.default.svc.cluster.local
 
    Get the Grafana URL to visit by running these commands in the same shell:
-     export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=grafana,app.kubernetes.io/instance=main-grafana-release" -o jsonpath="{.items[0].metadata.name}")
+     export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=grafana,app.kubernetes.io/instance=main-grafana-release" -ojsonpath="{.items[0].metadata.name}")
      kubectl --namespace default port-forward $POD_NAME 3000
 
 3. Login with the password from step 1 and the username: admin

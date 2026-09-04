@@ -193,3 +193,11 @@ We have found solution on this to create separate group and user to run sonarqub
 - Copy the Maven scanner code
 - Navigate to JENKINS URL ---> Under Build Job---> Execute Shell Command and copy the MAVEN SCANNER CODE
 - Run the BUILD JOB and view the http://<<SONARQUBE-URL>>:9000/dashboard?id=<<projectkey>>
+
+
+ex:
+ mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar ^
+  -Dsonar.projectKey=main ^
+  -Dsonar.projectName="main" ^
+  -Dsonar.host.url=http://localhost:9000 ^
+  -Dsonar.token=sqp_f620c149f3699498ed807d3337b7b5f4647b9e85
